@@ -14,12 +14,8 @@ fresh_filesys = {
             "files": [],
             "folders": []}}]
 }
-try:
-    import json
 
-except:
-    os.system("pip install json")
-    import json
+import json
 
 
 
