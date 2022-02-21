@@ -59,26 +59,26 @@ while True:
         print("shutdown: turns off os")
         print("reboot: reboots the os")
         print("cls: clears screen")
-    elif cmd.startswith("shutdown"):
+    elif cmd.split()[0] == "shutdown":
         break
-    elif cmd.startswith("reset"):
+    elif cmd.split()[0] == "reset":
         config["isFirstTime"] = 1
         updateConfig()
         os.system("python shell.py")
         break
-    elif cmd.startswith("restart"):
+    elif cmd.split()[0] == "restart":
         updateConfig()
         os.system("python shell.py")
         break
-    elif cmd.startswith("echo"):
+    elif cmd.split()[0] == "echo":
         try:
             print(userin.split("echo ")[1])
         except:
             print("echo what?")
-    elif cmd.startswith("cls"):
+    elif cmd.split()[0] == "cls":
         os.system("cls")
     # make me a mkdir command
-    elif cmd.startswith("mkdir"):
+    elif cmd.split()[0] == "mkdir":
         try:
             name = userin.split("mkdir ")[1]
             newFolder = filesystem.Folder(name, currdir.name)
@@ -89,7 +89,7 @@ while True:
             pass
 
     # make me a cd command
-    elif cmd.startswith("cd"):
+    elif cmd.split()[0] == "cd":
         try:
             name = userin.split("cd ")[1]
             currdir = currdir[name]
