@@ -97,10 +97,10 @@ while True:
     elif cmd.startswith("cd"):
         try:
             name = userin.split("cd ")[1]
-            currdir = root_folder.cd(name)
+            currdir = currdir[name]
         except:
             if userin.split("cd ")[1] == "..":
-                currdir = root_folder.cd("..")
+                currdir = currdir.parentFolder
             else:
                 print("Invalid command.")
     else:
