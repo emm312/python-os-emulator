@@ -1,7 +1,6 @@
 print("Python OS Loading!")
 import os
 import filesystem
-import hashlib
 root_folder = filesystem.Folder("root", None)
 fresh_filesys = {
     "name": "root",
@@ -99,6 +98,8 @@ while True:
                 currdir = currdir.parentFolder
             else:
                 print("Invalid command.")
+    elif cmd == "":
+        pass
     else:
         print("Invalid command.")
     
