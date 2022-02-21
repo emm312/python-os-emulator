@@ -73,9 +73,9 @@ while True:
         break
     elif cmd.startswith("echo"):
         try:
-            print(userin.split("echo ")[1])
+            print(userin.split()[1])
         except:
-            pass
+            print("echo what?")
     elif cmd.startswith("cls"):
         os.system("cls")
     # make me a mkdir command
