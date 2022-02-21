@@ -1,4 +1,4 @@
-print("Emms OS Loading!")
+print("Python OS Loading!")
 
 import os
 import filesystem
@@ -81,4 +81,4 @@ while True:
     else:
         print("Invalid command.")
 
-print("manali os has shut down sad")
+print("Python os has shut down")
