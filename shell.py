@@ -73,7 +73,7 @@ while True:
         break
     elif cmd.startswith("echo"):
         try:
-            print(userin.split()[1:len(userin.split())])
+            print(userin.split("echo ")[1])
         except:
             print("echo what?")
     elif cmd.startswith("cls"):
