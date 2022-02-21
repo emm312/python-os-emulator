@@ -1,3 +1,15 @@
 {
-  "null": "null"
+    "name": "root",
+    "parent": null,
+    "files": [],
+    "folders": [
+        {
+            "home": {
+                "name": "home",
+                "parent": "root",
+                "files": [],
+                "folders": []
+            }
+        }
+    ]
 }

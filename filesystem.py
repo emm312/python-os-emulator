@@ -31,9 +31,9 @@ class Folder:
     # make a toJson function
     def toJson(self):
         # remember to convert the files and folders to json
-        return {
+        return {name : {
             "name": self.name,
             "parentFolder": self.parentFolder,
             "files": [file.toJson() for file in self.files],
             "folders": [folder.toJson() for folder in self.folders]
-        }
+        }}
