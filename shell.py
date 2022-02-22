@@ -41,14 +41,11 @@ def convertFilesystemToObjects():
         for folder_name in folder:
             folder_obj = filesystem.Folder(folder_name, "root")
             for file in folder[folder_name]["files"]:
-                file_obj = filesystem.File(file["name"], file["ext"])
+                file_obj = filesystem.File(file["name"], file["ext"], folder_name)
                 folder_obj.addFile(file_obj)
             for folder_name in folder[folder_name]["folders"]:
                 folder_obj.addFolder(folder_name)
             root_folder.addFolder(folder_obj)
-    for file in filesys["root"]["files"]:
-        file_obj = filesystem.File(file["name"], file["ext"])
-        root_folder.addFile(file_obj)
 
     
 isOn = True
@@ -115,12 +112,11 @@ while True:
 
     # make a make file command
     elif cmd  == "mkfile":
-        try:
-            currdir.addFile(filesystem.File(userin.split("mkfile ")[1], userin.split("mkfile ")[1].split(".")[1]))
-            filesys = currdir.toJson()
-            updateFilesystem()
-        except:
-            print("please specify an extension")
+        
+        currdir.addFile(filesystem.File(userin.split("mkfile ")[1], userin.split("mkfile ")[1].split(".")[1], currdir.name))
+        filesys = root_folder.toJson()
+        updateFilesystem()
+        
 
     # make a remove file command
     elif cmd  == "rmfile":

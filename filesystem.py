@@ -2,7 +2,7 @@ class File:
     def __init__(self, name, ext, parentFolder):
         self.name = name
         self.ext = ext
-        self.parentFolder = ""
+        self.parentFolder = parentFolder
     def getParentFolder(self):
         return self.parentFolder
     #make a ToJson method
@@ -20,8 +20,8 @@ class Folder:
         self.files = []
         self.folders = []
     # make a addFolder and addFile method
-    def addFile(self, file):
-        self.files.append(file)
+    def addFile(self, phile):
+        self.files.append(phile)
     def addFolder(self, folder):
         self.folders.append(folder)
     def removeFolder(self, name):
@@ -35,7 +35,7 @@ class Folder:
     def removeFile(self, name):
         for file in self.files:
             if file.name == name:
-                self.files.remove(file)
+                self.files.remove(file.name)
                 return
             else:
                 print("File not found.")
