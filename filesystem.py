@@ -3,8 +3,10 @@ class File:
         self.name = name
         self.ext = ext
         self.parentFolder = parentFolder
+    
     def getParentFolder(self):
         return self.parentFolder
+    
     #make a ToJson method
     def toJson(self):
         return {
@@ -19,11 +21,14 @@ class Folder:
         self.parentFolder = parentFolder
         self.files = []
         self.folders = []
+
     # make a addFolder and addFile method
     def addFile(self, phile):
         self.files.append(phile)
+
     def addFolder(self, folder):
         self.folders.append(folder)
+
     def removeFolder(self, name):
         for folder in self.folders:
             if folder.name == name:
@@ -43,9 +48,11 @@ class Folder:
     # make a toJson function
     def toJson(self):
         # remember to convert the files and folders to json
-        return {self.name : {
-            "name": self.name,
-            "parentFolder": self.parentFolder,
-            "files": [file.toJson() for file in self.files],
-            "folders": [folder.toJson() for folder in self.folders]
-        }}
+        return {
+            self.name: {
+                "name": self.name,
+                "parentFolder": self.parentFolder,
+                "files": [file.toJson() for file in self.files],
+                "folders": [folder.toJson() for folder in self.folders]
+            }
+        }
