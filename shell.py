@@ -7,22 +7,20 @@ print("Python OS Loading!")
 
 root_folder = filesystem.Folder("root", None)
 fresh_filesys = {
-    "root":{
+    
         "name": "root",
         "parent": None,
         "files": [],
         "folders": [
             {
-                "home" : {
-                    "name": "home",
-                    "parent": "root",
-                    "files": [],
-                    "folders": []
-                }
+                "name": "home",
+                "parent": "root",
+                "files": [],
+                "folders": []
             }
         ]
     }
-}
+
 
 with open('config.json', 'r') as f:
     global config
@@ -43,15 +41,13 @@ def update_filesystem():
 
 
 def convert_filesystem_to_objects():
-    for folder in filesys["root"]["folders"]:
-        for folder_name in folder:
-            folder_obj = filesystem.Folder(folder_name, "root")
-            for file in folder[folder_name]["files"]:
-                file_obj = filesystem.File(file["name"], file["ext"], folder_name)
-                folder_obj.addFile(file_obj)
-            for _folder_name in folder[folder_name]["folders"]:
-                folder_obj.addFolder(_folder_name)
-            root_folder.addFolder(folder_obj)
+    global root_folder
+    global filesys
+    root_folder = filesystem.Folder(filesys["name"], None)
+    for folder in filesys["folders"]:
+        root_folder.addFolder(filesystem.Folder(folder["name"], root_folder))
+    for file in filesys["files"]:
+        root_folder.addFile(filesystem.File(file["name"], file["ext"], root_folder))
 
 update_config()
 print("Done!")
@@ -113,7 +109,7 @@ while True:
         # make me a mkdir command
         case "mkdir":
             update_filesystem()
-                # make a folder with the name of the userin and make the parent folder the currentdir
+            # make a folder with the name of the userin and make the parent folder the currentdir
             currdir.addFolder(filesystem.Folder(userin.split("mkdir ")[1], currdir.name))
             filesys = currdir.toJson()
             update_filesystem()

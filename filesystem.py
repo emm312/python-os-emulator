@@ -40,7 +40,8 @@ class Folder:
     def removeFile(self, name):
         for file in self.files:
             if file.name == name:
-                self.files.remove(file.name)
+                #ValueError: list.remove(x): x not in list
+                self.files.remove(file)
                 return
             else:
                 print("File not found.")
@@ -49,10 +50,9 @@ class Folder:
     def toJson(self):
         # remember to convert the files and folders to json
         return {
-            self.name: {
                 "name": self.name,
                 "parentFolder": self.parentFolder,
                 "files": [file.toJson() for file in self.files],
                 "folders": [folder.toJson() for folder in self.folders]
             }
-        }
+        
